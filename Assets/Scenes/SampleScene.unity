@@ -1220,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2335241087548753273, guid: 4404ceffd58666543af37173a607b5d0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ae66499550c2d4b40b80c16b39b02d65, type: 2}
     - target: {fileID: 7606087755393610276, guid: 4404ceffd58666543af37173a607b5d0, type: 3}
       propertyPath: m_Name
       value: Cylinder (1)
@@ -1258,6 +1262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b077eb68b335fa4587186135a23c277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnMove:
+    m_PersistentCalls:
+      m_Calls: []
   OnSpacePressed:
     m_PersistentCalls:
       m_Calls: []
@@ -1582,7 +1589,7 @@ GameObject:
   - component: {fileID: 1996166759}
   - component: {fileID: 1996166758}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,6 +1959,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2335241087548753273, guid: 4404ceffd58666543af37173a607b5d0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ae66499550c2d4b40b80c16b39b02d65, type: 2}
     - target: {fileID: 3870690859548535657, guid: 4404ceffd58666543af37173a607b5d0, type: 3}
       propertyPath: m_IsTrigger
       value: 1
