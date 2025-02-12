@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private InputManager inputManager;
-    [SerializeField] private float speed;
-
     private Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private InputManager inputManager; // Reference to InputManager
+    [SerializeField] private float speed = 5f; // Movement speed
+
     void Start()
     {
+        // Initialize Rigidbody and InputManager
+        rb = GetComponent<Rigidbody>();
+
+        // Ensure InputManager is properly referenced in the scene
+        inputManager = Object.FindFirstObjectByType<InputManager>();
+
+        // Subscribe to InputManager events
         inputManager.OnMove.AddListener(MovePlayer);
-        rb = GetComponent<Rigidbody>();  
     }
 
-    private void MovePlayer(Vector2 direction)
+    void MovePlayer(Vector2 direction)
     {
-        Vector3 moveDirection = new(direction.x, 0f, direction.y);
-        rb.AddForce(speed * moveDirection);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Correctly move the player based on input from InputManager
+        Vector3 moveDirection = new(direction.x, 0f, direction.y); // Use X and Z for 3D movement
+        rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed); // Apply movement velocity
     }
 }

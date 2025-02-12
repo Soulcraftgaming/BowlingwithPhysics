@@ -1,35 +1,29 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class InputManager : MonoBehaviour
 {
-    public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
-    public UnityEvent OnSpacePressed = new UnityEvent();
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>(); // Event for movement input
+    public UnityEvent OnSpacePressed = new UnityEvent(); // Event for space key press
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        // Check for space key press and invoke OnSpacePressed event
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             OnSpacePressed?.Invoke();
         }
-        
+
+        // Capture player movement input
         Vector2 input = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)) // Move left
         {
             input += Vector2.left;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)) // Move right
         {
             input += Vector2.right;
         }
-        OnMove?.Invoke(input);
-
+        OnMove?.Invoke(input); // Invoke the movement event with input
     }
 }

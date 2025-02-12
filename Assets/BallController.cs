@@ -3,8 +3,9 @@ using UnityEngine.Events;
 
 public class BallController : MonoBehaviour
 {
-    [SerializeField] private float force = 5f;
+    [SerializeField] private float force = 1f;
     [SerializeField] private Transform ballAnchor;
+    [SerializeField] private Transform launchIndicator;
     private bool isBallLaunched;
     private Rigidbody ballRB;
     private InputManager inputManager;
@@ -38,9 +39,7 @@ public class BallController : MonoBehaviour
         // Detach ball from player
         transform.parent = null;
         ballRB.isKinematic = false;
-
-        // Apply force to launch the ball
-        Debug.Log("Ball Launch Direction: " + transform.forward);
-        ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
+        ballRB.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+        launchIndicator.gameObject.SetActive(false);
     }
 }
