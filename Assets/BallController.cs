@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class BallController : MonoBehaviour
 {
+    //adding a comment here so the commit shows up
     [SerializeField] private float force = 1f;
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Transform launchIndicator;
