@@ -349,7 +349,7 @@ Transform:
   m_GameObject: {fileID: 319224706}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.75, y: 6.6722026, z: 2}
+  m_LocalPosition: {x: -0.25, y: 1.6722026, z: 2}
   m_LocalScale: {x: 0.25, y: 1, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1730,6 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 25
   ballAnchor: {fileID: 1303199280}
+  launchIndicator: {fileID: 114438184}
 --- !u!54 &1431697204
 Rigidbody:
   m_ObjectHideFlags: 0
