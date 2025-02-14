@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Gutter : MonoBehaviour
 {
@@ -17,21 +18,24 @@ public class Gutter : MonoBehaviour
 
     private void OnTriggerEnter(Collider triggeredBody)
     {
-        // we first get the rigidbody of the ball
-        // and store it in a local variable ballRigidBody
-        Rigidbody ballRigidBody = triggeredBody.GetComponent<Rigidbody>();
+        if (triggeredBody.CompareTag("Ball"))  {
 
-        //We store the velocity magnitude before resetting the velocity
-        float velocityMagnitude = ballRigidBody.linearVelocity.magnitude;
+        
+            // we first get the rigidbody of the ball
+            // and store it in a local variable ballRigidBody
+            Rigidbody ballRigidBody = triggeredBody.GetComponent<Rigidbody>();
 
-        //It is important to reset the linear AND angular velocity
-        //This is because the ball is rotating on the ground when moving
-        ballRigidBody.linearVelocity = Vector3.zero;
-        ballRigidBody.angularVelocity = Vector3.zero;
+            //We store the velocity magnitude before resetting the velocity
+            float velocityMagnitude = ballRigidBody.linearVelocity.magnitude;
 
-        //Now we add force in the forward direction of the gutter
-        //We use the cached velocity magnitude to keep it a little realistic
-        ballRigidBody.AddForce(transform.forward * velocityMagnitude,ForceMode.VelocityChange);
+            //It is important to reset the linear AND angular velocity
+            //This is because the ball is rotating on the ground when moving
+            ballRigidBody.linearVelocity = Vector3.zero;
+            ballRigidBody.angularVelocity = Vector3.zero;
+
+            //Now we add force in the forward direction of the gutter
+            //We use the cached velocity magnitude to keep it a little realistic
+            ballRigidBody.AddForce(transform.forward * velocityMagnitude,ForceMode.VelocityChange);
+        }
     }
-
 }
