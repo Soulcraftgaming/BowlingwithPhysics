@@ -5,7 +5,7 @@ public class InputManager : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>(); // Event for movement input
     public UnityEvent OnSpacePressed = new UnityEvent(); // Event for space key press
-
+    public UnityEvent OnResetPressed = new UnityEvent();
     private void Update()
     {
         // Check for space key press and invoke OnSpacePressed event
@@ -25,5 +25,10 @@ public class InputManager : MonoBehaviour
             input += Vector2.right;
         }
         OnMove?.Invoke(input); // Invoke the movement event with input
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnResetPressed?.Invoke();
+        }
     }
 }

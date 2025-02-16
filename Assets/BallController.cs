@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class BallController : MonoBehaviour
 {
-    //adding a comment here so the commit shows up
     [SerializeField] private float force = 1f;
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Transform launchIndicator;
@@ -16,20 +15,31 @@ public class BallController : MonoBehaviour
         ballRB = GetComponent<Rigidbody>();
 
         // Use the new method to find InputManager
-        inputManager = Object.FindFirstObjectByType<InputManager>(); 
+        if (inputManager == null)
+        {
+            inputManager = Object.FindFirstObjectByType<InputManager>();
+        }
+
         if (inputManager != null)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             inputManager.OnSpacePressed.AddListener(LaunchBall);
         }
         else
         {
-            Debug.LogWarning("InputManager not found!");
+            Debug.LogError("InputManager is not assigned or found in the scene!");
         }
 
-        // Attach ball to the anchor so it follows the player
+        ResetBall();
+    }
+
+    public void ResetBall()
+    {
+        isBallLaunched = false;
+        ballRB.isKinematic = true;
+        launchIndicator.gameObject.SetActive(true);
         transform.parent = ballAnchor;
         transform.localPosition = Vector3.zero;
-        ballRB.isKinematic = true;
     }
 
     private void LaunchBall()
